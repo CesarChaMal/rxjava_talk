@@ -5,13 +5,13 @@ import io.reactivex.Observable;
 
 import java.util.concurrent.TimeUnit;
 
-public class Ch1_3 {
+public class Ch3_3 {
 
     public static void main(String[] args) {
 
-        Observable.interval(1, TimeUnit.SECONDS)
-                .map(i -> i + " Mississippi")
-                .subscribe(System.out::println);
+        Observable.interval(300, TimeUnit.MILLISECONDS)
+                .take(2, TimeUnit.SECONDS)
+                .subscribe(i -> System.out.println("RECEIVED: " + i));
 
         sleep(5000);
     }

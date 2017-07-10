@@ -20,7 +20,7 @@ public class Ch2_3 {
         });
         Observable<Integer> lengths = source.map(String::length);
         Observable<Integer> filtered = lengths.filter(i -> i >= 5);
-        filtered.subscribe(s -> System.out.println("RECEIVED: " +
-                s));
+
+        filtered.subscribe(s -> System.out.println("RECEIVED: " + s));
     }
 }

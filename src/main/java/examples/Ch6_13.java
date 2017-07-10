@@ -1,5 +1,5 @@
 
-package ch6;
+package examples;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
