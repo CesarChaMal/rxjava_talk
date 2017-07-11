@@ -11,7 +11,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Ch2_13 extends Application {
+public class Ch2_2 extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

@@ -10,8 +10,7 @@ public class Ch6_4 {
     public static void main(String[] args) {
 
         Observable<String> source1 =
-                Observable.just("Alpha", "Beta", "Gamma", "Delta",
-                        "Epsilon")
+                Observable.just("Alpha", "Beta", "Gamma", "Delta", "Epsilon")
                         .subscribeOn(Schedulers.computation())
                         .map(s -> intenseCalculation((s)));
 

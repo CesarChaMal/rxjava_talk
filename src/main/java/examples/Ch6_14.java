@@ -23,7 +23,7 @@ public class Ch6_14 {
                 .filter(s -> s.matches("[0-9]+"))
                 .map(Integer::valueOf)
                 .reduce((total, next) -> total + next)
-                .doOnSuccess(i -> System.out.println("Calculated sum" + i + " on thread" + Thread.currentThread().getName()))
+                .doOnSuccess(i -> System.out.println("Calculated sum " + i + " on thread" + Thread.currentThread().getName()))
                 //Switch back to IO Scheduler
                 .observeOn(Schedulers.io())
                 .map(i -> i.toString())
@@ -37,7 +37,7 @@ public class Ch6_14 {
     public static void write(String text, String path) {
         BufferedWriter writer = null;
         try {
-//create a temporary file
+            //create a temporary file
             File file = new File(path);
             writer = new BufferedWriter(new FileWriter(file));
             writer.append(text);

@@ -3,6 +3,7 @@
 package examples;
 
 import io.reactivex.Observable;
+import io.reactivex.observables.ConnectableObservable;
 import io.reactivex.rxjavafx.observables.JavaFxObservable;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import javafx.application.Application;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import java.util.concurrent.TimeUnit;
 
 public final class Ch7_17 extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
         VBox root = new VBox();
@@ -27,11 +29,11 @@ public final class Ch7_17 extends Application {
         stage.show();
 
         // Multicast typed keys
-        Observable<String> typedLetters = JavaFxObservable.eventsOf(scene, KeyEvent.KEY_TYPED)
+        ConnectableObservable<String> typedLetters = JavaFxObservable.eventsOf(scene, KeyEvent.KEY_TYPED)
                         .map(KeyEvent::getCharacter)
-                        .share();
+                        .publish();
 
-        // Signal 300 milliseconds of inactivity
+        // Signal 500 milliseconds of inactivity
         Observable<String> restSignal = typedLetters
                         .throttleWithTimeout(500, TimeUnit.MILLISECONDS)
                         .startWith(""); //trigger initial
@@ -47,5 +49,7 @@ public final class Ch7_17 extends Application {
             System.out.println(s);
         });
 
+        //fire!
+        typedLetters.connect();
     }
 }
