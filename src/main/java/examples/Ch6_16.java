@@ -1,22 +1,17 @@
 /* Compilable code examples can be found at https://github.com/thomasnield/packt_learning_rxjava */
 
-package ch6;
+package examples;
 
 import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
 
 import java.time.LocalTime;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Ch6_17 {
+public class Ch6_16 {
     public static void main(String[] args) {
         Observable.range(1, 10)
-                .flatMap(i -> Observable.just(i)
-                        .subscribeOn(Schedulers.computation())
-                        .map(i2 -> intenseCalculation(i2))
-                )
-                .subscribe(i -> System.out.println("Received " + i + " " + LocalTime.now() + " on thread " + Thread.currentThread().getName()));
-        sleep(20000);
+                .map(i -> intenseCalculation(i))
+                .subscribe(i -> System.out.println("Received " + i + " " + LocalTime.now()));
     }
 
     public static <T> T intenseCalculation(T value) {
