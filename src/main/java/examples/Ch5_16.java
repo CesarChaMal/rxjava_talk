@@ -9,8 +9,7 @@ public class Ch5_16 {
 
     public static void main(String[] args) {
 
-        Observable<Long> seconds =
-                Observable.interval(1, TimeUnit.SECONDS)
+        Observable<Long> seconds = Observable.interval(1, TimeUnit.SECONDS)
                         .replay()
                         .autoConnect();
 

@@ -10,18 +10,18 @@ public class Ch4_4 {
     public static void main(String[] args) {
 
         //emit every second
-        Observable<String> source1 = Observable.interval(1, TimeUnit.SECONDS)
+        Observable<String> timer1 = Observable.interval(1, TimeUnit.SECONDS)
                 .map(i -> i + 1) // emit elapsed seconds
                 .map(i -> "Source1: " + i + " seconds");
 
         //emit every 300 milliseconds
-        Observable<String> source2 =
+        Observable<String> timer2 =
                 Observable.interval(300, TimeUnit.MILLISECONDS)
                         .map(i -> (i + 1) * 300) // emit elapsed milliseconds
                         .map(i -> "Source2: " + i + " milliseconds");
 
         //merge and subscribe
-        Observable.merge(source1, source2)
+        Observable.merge(timer1, timer2)
                 .subscribe(System.out::println);
 
         //keep alive for 3 seconds

@@ -29,9 +29,10 @@ public final class Ch7_17 extends Application {
         stage.show();
 
         // Multicast typed keys
-        ConnectableObservable<String> typedLetters = JavaFxObservable.eventsOf(scene, KeyEvent.KEY_TYPED)
+        Observable<String> typedLetters = JavaFxObservable.eventsOf(scene, KeyEvent.KEY_TYPED)
                         .map(KeyEvent::getCharacter)
-                        .publish();
+                        .publish()
+                        .autoConnect();
 
         // Signal 500 milliseconds of inactivity
         Observable<String> restSignal = typedLetters
@@ -48,8 +49,5 @@ public final class Ch7_17 extends Application {
             typedTextLabel.setText(s);
             System.out.println(s);
         });
-
-        //fire!
-        typedLetters.connect();
     }
 }

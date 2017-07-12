@@ -11,6 +11,7 @@ public class Ch6_13 {
         Observable.just("WHISKEY/27653/TANGO", "6555/BRAVO", "232352/5675675/FOXTROT")
                 .subscribeOn(Schedulers.io())
                 .flatMap(s -> Observable.fromArray(s.split("/")))
+
                 //Happens on Computation Scheduler
                 .observeOn(Schedulers.computation())
                 .filter(s -> s.matches("[0-9]+"))

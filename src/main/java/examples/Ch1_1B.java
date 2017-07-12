@@ -1,19 +1,14 @@
-
 package examples;
 
 import io.reactivex.Observable;
 
-public class Ch1_2A {
+public class Ch1_1B {
 
     public static void main(String[] args) {
 
         Observable<String> myStrings =
                 Observable.just("Alpha", "Beta", "Gamma", "Delta", "Epsilon");
 
-        Observable<Integer> lengths = myStrings.map(s -> s.length());
-
-        Observable<Integer> filtered = lengths.filter(i -> i > 4);
-
-        filtered.subscribe(System.out::println);
+        myStrings.subscribe(System.out::println);
     }
 }
