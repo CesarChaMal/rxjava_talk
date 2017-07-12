@@ -30,8 +30,7 @@ public final class Ch7_16 extends Application {
 // or dispose() it by switching to empty Observable
         selectedStates.switchMap(selected -> {
             if (selected)
-                return Observable.interval(1,
-                        TimeUnit.MILLISECONDS);
+                return Observable.interval(1, TimeUnit.MILLISECONDS);
             else
                 return Observable.empty();
         }).observeOn(JavaFxScheduler.platform()) // Observe on JavaFX UI thread
